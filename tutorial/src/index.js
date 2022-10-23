@@ -1,5 +1,7 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import { createRoot } from 'react-dom/client';
+const container = document.getElementById('root');
+const root = createRoot(container);
 
 // JSX Rules
 // return single element
@@ -12,17 +14,15 @@ import ReactDom from 'react-dom';
 function Greeting() {
   return (
     <div>
-      <h1>hello world</h1>
+      <Person />
+      <Message />
     </div>
   );
 }
 
-// const Greeting = () => {
-//   return React.createElement(
-//     'div',
-//     {},
-//     React.createElement('h1', {}, 'hello world')
-//   );
-// };
+const Person = () => <h2>john doe</h2>;
+const Message = () => {
+  return <p>this is my message</p>;
+};
 
-ReactDom.render(<Greeting />, document.getElementById('root'));
+root.render(<Greeting />);
