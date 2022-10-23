@@ -1,12 +1,14 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import './index.css';
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(<BookList />);
 
 function BookList() {
   return (
-    <section>
+    <section className='booklist'>
+      <Book />
       <Book />
       <Book />
       <Book />
@@ -18,7 +20,7 @@ function BookList() {
 
 const Book = () => {
   return (
-    <article>
+    <article className='book'>
       <Image />
       <Title />
       <Author />
@@ -28,7 +30,7 @@ const Book = () => {
 
 const Image = () => (
   <img
-    src='https://images-na.ssl-images-amazon.com/images/I/618INpEnVjL._AC_UL900_SR900,600_.jpg'
+    src='https://m.media-amazon.com/images/I/41VsfjWEvSL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg'
     alt=''
   />
 );
