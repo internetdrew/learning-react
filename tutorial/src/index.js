@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 const container = document.getElementById('root');
 const root = createRoot(container);
+root.render(<BookList />);
 
 // JSX Rules
 // return single element
@@ -11,18 +12,14 @@ const root = createRoot(container);
 // close every element
 // formatting
 
-function Greeting() {
+function BookList() {
   return (
-    <div>
-      <Person />
-      <Message />
-    </div>
+    <section>
+      <Book />
+    </section>
   );
 }
 
-const Person = () => <h2>john doe</h2>;
-const Message = () => {
-  return <p>this is my message</p>;
+const Book = () => {
+  return <article>this is a book</article>;
 };
-
-root.render(<Greeting />);
