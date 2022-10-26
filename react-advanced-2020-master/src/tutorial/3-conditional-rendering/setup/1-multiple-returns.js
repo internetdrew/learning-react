@@ -16,6 +16,7 @@ const MultipleReturns = () => {
   const getUser = async () => {
     try {
       const res = await fetch(url);
+
       if (!res.ok) {
         setIsLoading(false);
         setIsError(true);
