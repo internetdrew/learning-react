@@ -19,12 +19,11 @@ function App() {
       const res = await fetch(url);
       if (!res.ok) throw new Error('problem fetching');
       const tours = await res.json();
-      console.log(tours);
       setLoading(false);
       setTours(tours);
     } catch (err) {
       setLoading(false);
-      console.log(err);
+      console.error(err);
     }
   };
 
