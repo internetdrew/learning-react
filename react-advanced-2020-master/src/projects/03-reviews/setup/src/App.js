@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Review from './Review';
-import * as Icon from 'react-feather';
 
 function App() {
   return (
