@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Review from './Review';
-import { FiAlertCircle } from 'react-icons/fi';
+import * as Icon from 'react-feather';
 
 function App() {
   return (
-    <h2>
-      reviews project setup <FiAlertCircle className='icon' />
-    </h2>
+    <main>
+      <section className='container'>
+        <div className='title'>
+          <h2>our reviews</h2>
+          <div className='underline'></div>
+        </div>
+        <Review />
+      </section>
+    </main>
   );
 }
 
