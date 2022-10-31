@@ -13,7 +13,7 @@ const Question = ({ title, info }) => {
       <header>
         <h4>{title}</h4>
         <button className='btn' onClick={toggleInfo}>
-          <FaPlus />
+          {showInfo ? <FaMinus /> : <FaPlus />}
         </button>
       </header>
       {showInfo && <p>{info}</p>}
