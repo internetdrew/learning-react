@@ -29,9 +29,20 @@ const ControlledInputs = () => {
   //   }
   // };
 
-  const handleChange = e => {};
+  const handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log(name);
+    setPerson({ ...person, [name]: value });
+  };
   const handleSubmit = e => {
     e.preventDefault();
+    if (!person.firstName.trim() || !person.email.trim() || !person.age.trim())
+      return;
+
+    const newPerson = { ...person, id: new Date().getTime().toString() };
+    setPeople([...people, newPerson]);
+    setPerson({ firstName: '', email: '', age: '' });
   };
 
   return (
@@ -73,10 +84,11 @@ const ControlledInputs = () => {
           </button>
         </form>
         {people.map((person, index) => {
-          const { id, firstName, email } = person;
+          const { id, firstName, email, age } = person;
           return (
             <div className='item' key={id}>
               <h4>{firstName}</h4>
+              <p>{age}</p>
               <p>{email}</p>
             </div>
           );
