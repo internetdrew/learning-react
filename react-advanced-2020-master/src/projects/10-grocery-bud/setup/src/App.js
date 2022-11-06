@@ -17,7 +17,7 @@ function App() {
     e.preventDefault();
     if (!name.trim()) {
       // display alert
-      return showAlert(true, 'please enter a value', 'danger');
+      return showAlert(true, 'danger', 'please enter a value');
     }
 
     if (name && isEditing) {
@@ -25,6 +25,7 @@ function App() {
     }
 
     // show alert
+    showAlert(true, 'success', 'item added to the list');
     const newItem = {
       id: new Date().getTime().toString(),
       title: name,
@@ -33,8 +34,8 @@ function App() {
     setName('');
   };
 
-  const showAlert = (show = false, msg = '', type = '') => {
-    setAlert({ show, msg, type });
+  const showAlert = (show = false, type = '', msg = '') => {
+    setAlert({ show, type, msg });
   };
 
   return (
