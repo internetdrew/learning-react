@@ -4,7 +4,11 @@ import Alert from './Alert';
 
 function App() {
   const [name, setName] = useState('');
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(
+    localStorage.getItem('list') === null
+      ? []
+      : JSON.parse(localStorage.getItem('list'))
+  );
   const [isEditing, setIsEditing] = useState(false);
   const [editID, setEditID] = useState(null);
   const [alert, setAlert] = useState({
@@ -41,7 +45,7 @@ function App() {
     showAlert(true, 'success', 'item added to the list');
     const newItem = {
       id: new Date().getTime().toString(),
-      title: name,
+      title: name.trim(),
     };
     setList([...list, newItem]);
     setName('');
@@ -67,6 +71,10 @@ function App() {
     setEditID(id);
     setName(specificItem.title);
   };
+
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(list));
+  }, [list]);
 
   return (
     <section className='section-center'>
