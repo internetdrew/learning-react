@@ -5,6 +5,7 @@ import { data } from '../../../data';
 
 const PersonContext = React.createContext();
 // two components - Provider, Consumer
+// Provider works as a distributor
 
 const ContextAPI = () => {
   const [people, setPeople] = useState(data);
@@ -14,30 +15,27 @@ const ContextAPI = () => {
     });
   };
   return (
-    <>
-      <h3>prop drilling</h3>
-      <List people={people} removePerson={removePerson} />
-    </>
+    <PersonContext.Provider value={{ removePerson, people }}>
+      <h3>context API / useContext</h3>
+      <List />
+    </PersonContext.Provider>
   );
 };
 
-const List = ({ people, removePerson }) => {
+const List = () => {
+  const { people } = useContext(PersonContext);
+  console.log(people);
   return (
     <>
       {people.map(person => {
-        return (
-          <SinglePerson
-            key={person.id}
-            {...person}
-            removePerson={removePerson}
-          />
-        );
+        return <SinglePerson key={person.id} {...person} />;
       })}
     </>
   );
 };
 
-const SinglePerson = ({ id, name, removePerson }) => {
+const SinglePerson = ({ id, name }) => {
+  const { removePerson } = useContext(PersonContext);
   return (
     <div className='item'>
       <h4>{name}</h4>
