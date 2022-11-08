@@ -3,11 +3,14 @@ import { data } from '../../../data';
 // more components
 // fix - context api, redux (for more complex cases)
 
+const PersonContext = React.createContext();
+// two components - Provider, Consumer
+
 const ContextAPI = () => {
   const [people, setPeople] = useState(data);
-  const removePerson = (id) => {
-    setPeople((people) => {
-      return people.filter((person) => person.id !== id);
+  const removePerson = id => {
+    setPeople(people => {
+      return people.filter(person => person.id !== id);
     });
   };
   return (
@@ -21,7 +24,7 @@ const ContextAPI = () => {
 const List = ({ people, removePerson }) => {
   return (
     <>
-      {people.map((person) => {
+      {people.map(person => {
         return (
           <SinglePerson
             key={person.id}
