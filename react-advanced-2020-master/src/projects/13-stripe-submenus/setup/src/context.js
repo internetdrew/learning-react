@@ -16,7 +16,6 @@ export const AppProvider = ({ children }) => {
     const page = sublinks.find(link => {
       return link.page === text;
     });
-    console.log(page);
     setPage(page);
     setLocation(coordinates);
     setIsSubmenuOpen(true);
