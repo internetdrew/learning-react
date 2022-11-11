@@ -3,24 +3,21 @@ export default [
     id: 1,
     title: 'Samsung Galaxy S7',
     price: 599.99,
-    img:
-      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1583368215/phone-2_ohtt5s.png',
+    img: 'https://m.media-amazon.com/images/I/61ZRehsCRBL._CR0,160,960,960_UX256.jpg',
     amount: 1,
   },
   {
     id: 2,
     title: 'google pixel ',
     price: 499.99,
-    img:
-      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1583371867/phone-1_gvesln.png',
+    img: 'https://m.media-amazon.com/images/I/6107YiZFYQL._CR0,204,1224,1224_UX256.jpg',
     amount: 1,
   },
   {
     id: 3,
     title: 'Xiaomi Redmi Note 2',
     price: 699.99,
-    img:
-      'https://res.cloudinary.com/diqqf3eq2/image/upload/v1583368224/phone-3_h2s6fo.png',
+    img: 'https://cf.shopee.com.br/file/34a43d289d56d82d104eee7771e2ef80',
     amount: 1,
   },
 ];
