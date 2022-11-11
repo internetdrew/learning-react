@@ -7,7 +7,7 @@ const Navbar = () => {
   const { openSidebar, openSubmenu, closeSubmenu } = useGlobalContext();
 
   const displaySubmenu = e => {
-    if (e.target.className !== 'link-btn') return;
+    if (!e.target.classList.contains('link-btn')) return;
     const page = e.target.textContent;
     const tempBtn = e.target.getBoundingClientRect();
     const center = (tempBtn.left + tempBtn.right) / 2;
@@ -15,8 +15,13 @@ const Navbar = () => {
     openSubmenu(page, { center, bottom });
   };
 
+  const handleSubmenu = e => {
+    if (e.target.classList.contains('link-btn')) return;
+    closeSubmenu();
+  };
+
   return (
-    <nav className='nav'>
+    <nav className='nav' onMouseOver={handleSubmenu}>
       <div className='nav-center'>
         <div className='nav-header'>
           <img src={logo} alt='stripe logo' className='nav-logo' />
