@@ -35,6 +35,7 @@ const reducer = (state, action) => {
       (cartTotal, cartItem) => {
         const { price, amount } = cartItem;
         const itemTotal = price * amount;
+
         cartTotal.total += itemTotal;
         cartTotal.amount += amount;
         return cartTotal;
@@ -48,7 +49,31 @@ const reducer = (state, action) => {
     return { ...state, total, amount };
   }
 
-  return state;
+  if (action.type === 'LOADING') {
+    return { ...state, loading: true };
+  }
+
+  if (action.type === 'DISPLAY_ITEMS') {
+    return { ...state, cart: action.payload, loading: false };
+  }
+
+  if (action.type === 'CHANGE_AMOUNT') {
+    let tempCart = state.cart
+      .map(cartItem => {
+        if (cartItem.id !== action.payload.id) return cartItem;
+
+        if (action.payload.type === 'increase') {
+          return { ...cartItem, amount: cartItem.amount + 1 };
+        }
+        if (action.payload.type === 'decrease') {
+          return { ...cartItem, amount: cartItem.amount - 1 };
+        }
+      })
+      .filter(cartItem => cartItem.amount > 0);
+    return { ...state, cart: tempCart };
+  }
+
+  throw new Error('no matching action types');
 };
 
 export default reducer;

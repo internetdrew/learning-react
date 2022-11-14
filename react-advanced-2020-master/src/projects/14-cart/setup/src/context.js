@@ -24,13 +24,20 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'REMOVE', payload: id });
   };
 
-  const increase = id => {
-    dispatch({ type: 'INCREASE', payload: id });
+  const fetchData = async () => {
+    dispatch({ type: 'LOADING' });
+    const res = await fetch(url);
+    const cart = await res.json();
+    dispatch({ type: 'DISPLAY_ITEMS', payload: cart });
   };
 
-  const decrease = id => {
-    dispatch({ type: 'DECREASE', payload: id });
+  const changeAmount = (id, type) => {
+    dispatch({ type: 'CHANGE_AMOUNT', payload: { id, type } });
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   useEffect(() => {
     dispatch({ type: 'GET_TOTALS' });
@@ -42,8 +49,7 @@ const AppProvider = ({ children }) => {
         ...state,
         clearCart,
         remove,
-        increase,
-        decrease,
+        changeAmount,
       }}
     >
       {children}
