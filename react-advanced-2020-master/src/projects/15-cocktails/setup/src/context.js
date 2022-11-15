@@ -16,6 +16,10 @@ const AppProvider = ({ children }) => {
       const data = await response.json();
       const { drinks } = data;
 
+      if (!drinks) {
+        setCocktails([]);
+      }
+
       if (drinks) {
         const newCocktails = drinks.map(drink => {
           const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } =
@@ -32,11 +36,7 @@ const AppProvider = ({ children }) => {
         setCocktails(newCocktails);
       }
 
-      if (!drinks) {
-        setCocktails([]);
-      }
       setLoading(false);
-      console.log(drinks);
     } catch (error) {
       console.log(error);
     }
