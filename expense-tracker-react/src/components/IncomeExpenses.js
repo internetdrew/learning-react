@@ -6,26 +6,25 @@ export const IncomeExpenses = () => {
 
   const income = transactions
     .filter(transaction => transaction.amount > 0)
-    .reduce((total, currentTx) => (total += currentTx.amount), 0)
-    .toFixed(2);
+    .reduce((total, currentTx) => (total += currentTx.amount), 0);
 
   const expense = transactions
     .filter(transaction => transaction.amount < 0)
     .reduce((total, expense) => (total += expense.amount), 0);
-  console.log(expense);
+
   return (
     <>
       <div className='inc-exp-container'>
         <div>
           <h4>Income</h4>
           <p id='money-plus' className='money plus'>
-            +${income}
+            +${income.toFixed(2)}
           </p>
         </div>
         <div>
           <h4>Expense</h4>
           <p id='money-minus' className='money minus'>
-            -${Math.abs(expense)}
+            -${Math.abs(expense).toFixed(2)}
           </p>
         </div>
       </div>
