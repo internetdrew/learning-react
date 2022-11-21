@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer, useContext } from 'react';
 import AppReducer from './AppReducer';
 
 // Initial state
@@ -11,8 +11,8 @@ const initialState = {
   ],
 };
 
-// Create context
 export const GlobalContext = createContext(initialState);
+// Create context
 
 // Provider component
 export const GlobalProvider = ({ children }) => {
@@ -23,4 +23,8 @@ export const GlobalProvider = ({ children }) => {
       {children}
     </GlobalContext.Provider>
   );
+};
+
+export const useGlobalContext = () => {
+  return useContext(GlobalContext);
 };
